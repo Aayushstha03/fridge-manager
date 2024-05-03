@@ -14,7 +14,7 @@ class _RecipePageState extends State<RecipePage> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text(
-          'Recipe',
+          'Recipes',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),

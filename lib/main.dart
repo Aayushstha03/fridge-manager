@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Fridge App',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber.shade300),
         useMaterial3: true,
