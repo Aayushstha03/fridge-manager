@@ -18,4 +18,8 @@ class Ingredient extends ChangeNotifier {
   List<String> getIngredients() {
     return ingredients;
   }
+
+  List<String> getPantryContents() {
+    return currentPantry;
+  }
 }

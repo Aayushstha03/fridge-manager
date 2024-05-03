@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fridge_app/components/search_bar.dart';
+import 'package:fridge_app/ingredient_model.dart';
+import 'package:provider/provider.dart';
 
 class PantryPage extends StatefulWidget {
   const PantryPage({super.key});
@@ -10,38 +13,17 @@ class PantryPage extends StatefulWidget {
 class _PantryPageState extends State<PantryPage> {
   void addRecipe() {
     //functions
-    void addItemToPantry() {}
-    void cancelAdd() {
-      setState(() {
-        Navigator.of(context).pop();
-      });
-    }
-
     //dialog
     showDialog(
       context: context,
       builder: (context) {
-        return AlertDialog(
-          title: const Text('add item to pantry'),
-          content: Column(
-            children: [
-              const SearchBar(
-                leading: Icon(Icons.search),
-                hintText: 'Tofu',
-              ),
-              ButtonBar(
-                alignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  ElevatedButton(
-                      onPressed: cancelAdd,
-                      child: const Icon(Icons.cancel_outlined)),
-                  ElevatedButton(
-                      onPressed: addItemToPantry,
-                      child: const Icon(Icons.save_outlined)),
-                ],
-              ),
-            ],
-          ),
+        return const AlertDialog(
+          title: Text('Add item to pantry'),
+          content: Text('Choose an item'),
+          actions: [
+            FilledButton(onPressed: null, child: Icon(Icons.cancel_outlined)),
+            FilledButton(onPressed: null, child: Icon(Icons.add_outlined))
+          ],
         );
       },
     );
@@ -49,26 +31,29 @@ class _PantryPageState extends State<PantryPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text(
-          'Pantry',
-          style: TextStyle(fontWeight: FontWeight.bold),
+    return Consumer<Ingredient>(
+      builder: (context, value, child) => Scaffold(
+        appBar: AppBar(
+          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          title: const Text(
+            'Pantry',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
         ),
-      ),
-      body: ListView(
-        children: [
-          ListTile(
-            leading: Icon(Icons.grass),
-            title: Text('Tofu'),
-          )
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        onPressed: addRecipe,
-        child: const Icon(Icons.add),
+        body: ListView.builder(
+          itemCount: value.currentPantry.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              leading: const Icon(Icons.grass_rounded),
+              title: Text(value.getPantryContents()[index]),
+            );
+          },
+        ),
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          onPressed: addRecipe,
+          child: const Icon(Icons.add),
+        ),
       ),
     );
   }
