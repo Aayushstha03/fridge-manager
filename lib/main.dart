@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:fridge_app/ingredient_model.dart';
 import 'package:fridge_app/pages/pantry_page.dart';
 import 'package:fridge_app/pages/recipe_page.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => Ingredient(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
