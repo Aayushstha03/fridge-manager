@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fridge_app/components/search_bar.dart';
-import 'package:fridge_app/ingredient_model.dart';
+import 'package:fridge_app/models/ingredient_model.dart';
 import 'package:provider/provider.dart';
 
 class PantryPage extends StatefulWidget {
@@ -31,7 +31,7 @@ class _PantryPageState extends State<PantryPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<Ingredient>(
+    return Consumer<Ingredients>(
       builder: (context, value, child) => Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -46,7 +46,8 @@ class _PantryPageState extends State<PantryPage> {
           itemBuilder: (context, index) {
             return ListTile(
               leading: const Icon(Icons.grass_rounded),
-              title: Text(value.getPantryContents()[index]),
+              title: Text(value.getPantryContents()[index].name +
+                  value.getPantryContents()[index].type),
             );
           },
         ),

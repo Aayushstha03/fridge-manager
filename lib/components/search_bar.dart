@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fridge_app/ingredient_model.dart';
+import 'package:fridge_app/models/ingredient_model.dart';
 import 'package:provider/provider.dart';
 
 class MySearchBar extends StatefulWidget {
@@ -22,21 +22,10 @@ class _MySearchBarState extends State<MySearchBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<Ingredient>(
+    return Consumer<Ingredients>(
       builder: (context, value, child) => Container(
         child: Column(
           children: [
-            SearchBar(
-              leading: Icon(Icons.search_rounded),
-              onChanged: (p) {
-                setState(() {
-                  searchResults = value.ingredients
-                      .where((item) =>
-                          item.toLowerCase().contains(query.toLowerCase()))
-                      .toList();
-                });
-              },
-            ),
             ButtonBar(
               alignment: MainAxisAlignment.spaceBetween,
               children: [
