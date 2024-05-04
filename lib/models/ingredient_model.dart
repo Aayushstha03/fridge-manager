@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fridge_app/models/ingredient.dart';
 
 class Ingredients extends ChangeNotifier {
+  //list of ingredients
   List<Ingredient> ingredients = [
     Ingredient(name: 'Tofu', type: 'veggie'),
     Ingredient(name: 'Onion', type: 'veggie'),
@@ -10,19 +11,28 @@ class Ingredients extends ChangeNotifier {
     Ingredient(name: 'Chicken', type: 'meat'),
     Ingredient(name: 'Apple', type: 'fruit'),
   ];
-
+//list of current pantry contents
   List<Ingredient> currentPantry = [];
 
-  void addToPantry(String name, String type) {
-    currentPantry.add(Ingredient(name: name, type: type));
-    notifyListeners();
-  }
-
+//get all ingredients
   List<Ingredient> getIngredients() {
     return ingredients;
   }
 
+// pantry contents
   List<Ingredient> getPantryContents() {
     return currentPantry;
+  }
+
+  ///add item to pantry from list of ingredients
+  void addToPantry(Ingredient item) {
+    currentPantry.add(item);
+    notifyListeners();
+  }
+
+  //remove item from ingredients
+  void removeFromPantry(Ingredient item) {
+    currentPantry.remove(item);
+    notifyListeners();
   }
 }
