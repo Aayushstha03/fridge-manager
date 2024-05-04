@@ -39,6 +39,7 @@ class _PantryPageState extends State<PantryPage> {
             'Pantry',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
+          centerTitle: true,
         ),
         body: ListView.builder(
           itemCount: value.currentPantry.length,

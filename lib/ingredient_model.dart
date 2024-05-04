@@ -8,7 +8,7 @@ class Ingredient extends ChangeNotifier {
     'Tomato',
   ];
 
-  List<String> currentPantry = [];
+  List<String> currentPantry = ['Onion'];
 
   void addToPantry(String food) {
     currentPantry.add(food);

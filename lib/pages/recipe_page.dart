@@ -20,6 +20,7 @@ class _RecipePageState extends State<RecipePage> {
             'Recipes',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
+          centerTitle: true,
         ),
         body: ListView.builder(
           itemCount: value.ingredients.length,
