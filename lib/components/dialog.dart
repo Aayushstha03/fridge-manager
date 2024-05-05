@@ -49,7 +49,35 @@ class _AddNewRecipeDialogState extends State<AddNewRecipeDialog> {
               onPressed: () {
                 Ingredient toAdd = value.getIngredients().firstWhere(
                     (element) => element.name == itemController.text);
-                value.addToPantry(toAdd);
+
+                if (value.getPantryContents().contains(toAdd) == true) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      showCloseIcon: true,
+                      closeIconColor: Colors.black,
+                      backgroundColor:
+                          Theme.of(context).colorScheme.inversePrimary,
+                      content: const Text(
+                        'Item already in Pantry!',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ),
+                  );
+                } else {
+                  value.addToPantry(toAdd);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      showCloseIcon: true,
+                      closeIconColor: Colors.black,
+                      backgroundColor:
+                          Theme.of(context).colorScheme.inversePrimary,
+                      content: Text(
+                        'Item successfully added to Pantry!',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ),
+                  );
+                }
                 Navigator.of(context).pop();
               },
               child: const Icon(Icons.add_outlined))

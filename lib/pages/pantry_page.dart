@@ -53,7 +53,7 @@ class _PantryPageState extends State<PantryPage> {
                   ),
                 ),
                 onPressed: () {},
-                child: Icon(Icons.delete),
+                child: const Icon(Icons.delete),
               ),
             );
           },
