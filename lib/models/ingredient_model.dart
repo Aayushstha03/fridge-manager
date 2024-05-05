@@ -4,15 +4,16 @@ import 'package:fridge_app/models/ingredient.dart';
 class Ingredients extends ChangeNotifier {
   //list of ingredients
   List<Ingredient> ingredients = [
-    Ingredient(name: 'Tofu', type: 'veggie'),
-    Ingredient(name: 'Onion', type: 'veggie'),
-    Ingredient(name: 'Capsicum', type: 'veggie'),
-    Ingredient(name: 'Tomato', type: 'veggie'),
-    Ingredient(name: 'Chicken', type: 'meat'),
-    Ingredient(name: 'Apple', type: 'fruit'),
+    Ingredient(name: 'Tofu', icon: 'grass_rounded'),
+    Ingredient(name: 'Onion', icon: 'grass_rounded'),
+    Ingredient(name: 'Capsicum', icon: 'grass_rounded'),
+    Ingredient(name: 'Tomato', icon: 'grass_rounded'),
+    Ingredient(name: 'Chicken', icon: 'kebab_dining_outlined'),
   ];
 //list of current pantry contents
-  List<Ingredient> currentPantry = [];
+  List<Ingredient> currentPantry = [
+    Ingredient(name: 'Tofu', icon: 'grass_rounded')
+  ];
 
 //get all ingredients
   List<Ingredient> getIngredients() {
