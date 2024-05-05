@@ -71,7 +71,7 @@ class _AddNewRecipeDialogState extends State<AddNewRecipeDialog> {
                       closeIconColor: Colors.black,
                       backgroundColor:
                           Theme.of(context).colorScheme.inversePrimary,
-                      content: Text(
+                      content: const Text(
                         'Item successfully added to Pantry!',
                         style: TextStyle(color: Colors.black),
                       ),
