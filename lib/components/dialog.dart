@@ -1,3 +1,6 @@
+// TODO if item is in pantry do not add again display warning! also snackbar
+// todo display snackbar when successfully added item
+
 import 'package:flutter/material.dart';
 import 'package:fridge_app/models/ingredient.dart';
 import 'package:fridge_app/models/ingredient_model.dart';

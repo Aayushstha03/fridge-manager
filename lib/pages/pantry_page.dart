@@ -40,6 +40,21 @@ class _PantryPageState extends State<PantryPage> {
             return ListTile(
               leading: value.getPantryContents()[index].icon,
               title: Text(value.getPantryContents()[index].name),
+              trailing: FilledButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+                    (Set<MaterialState> states) {
+                      if (states.contains(MaterialState.pressed)) {
+                        return Colors.red.withOpacity(0.5);
+                      }
+                      return Colors
+                          .red.shade500; // Use the component's default.
+                    },
+                  ),
+                ),
+                onPressed: () {},
+                child: Icon(Icons.delete),
+              ),
             );
           },
         ),
