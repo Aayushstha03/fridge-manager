@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fridge_app/components/dialog.dart';
 import 'package:fridge_app/models/ingredient_model.dart';
 import 'package:provider/provider.dart';
 
@@ -16,14 +17,7 @@ class _PantryPageState extends State<PantryPage> {
     showDialog(
       context: context,
       builder: (context) {
-        return const AlertDialog(
-          title: Text('Add item to pantry'),
-          content: Text('Choose an item'),
-          actions: [
-            FilledButton(onPressed: null, child: Icon(Icons.cancel_outlined)),
-            FilledButton(onPressed: null, child: Icon(Icons.add_outlined))
-          ],
-        );
+        return AddNewRecipeDialog();
       },
     );
   }
