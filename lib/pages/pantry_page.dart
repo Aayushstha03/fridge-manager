@@ -1,5 +1,3 @@
-import 'dart:js_interop';
-
 import 'package:flutter/material.dart';
 import 'package:fridge_app/components/dialog.dart';
 import 'package:fridge_app/models/ingredient_model.dart';
@@ -19,7 +17,7 @@ class _PantryPageState extends State<PantryPage> {
     showDialog(
       context: context,
       builder: (context) {
-        return AddNewRecipeDialog();
+        return const AddNewRecipeDialog();
       },
     );
   }
@@ -54,7 +52,9 @@ class _PantryPageState extends State<PantryPage> {
                     },
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  value.removeFromPantry(value.getPantryContents()[index]);
+                },
                 child: const Icon(Icons.delete),
               ),
             );

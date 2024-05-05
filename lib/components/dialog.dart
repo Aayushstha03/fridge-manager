@@ -84,6 +84,5 @@ class _AddNewRecipeDialogState extends State<AddNewRecipeDialog> {
         ],
       ),
     );
-    ;
   }
 }
