@@ -1,6 +1,8 @@
+import 'package:flutter/material.dart';
+
 class Ingredient {
   final String name;
-  final String icon;
+  final Icon icon;
 
   Ingredient({
     required this.name,

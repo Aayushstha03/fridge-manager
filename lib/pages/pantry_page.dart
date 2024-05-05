@@ -38,11 +38,8 @@ class _PantryPageState extends State<PantryPage> {
           itemCount: value.currentPantry.length,
           itemBuilder: (context, index) {
             return ListTile(
-              // leading: Icon(Icons.Text(value.getPantryContents()[index].icon)),
-              title: Text(value.getPantryContents()[index].name +
-                  '(' +
-                  value.getPantryContents()[index].icon +
-                  ')'),
+              leading: value.getPantryContents()[index].icon,
+              title: Text(value.getPantryContents()[index].name),
             );
           },
         ),

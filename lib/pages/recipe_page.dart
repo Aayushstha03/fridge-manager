@@ -29,7 +29,7 @@ class _RecipePageState extends State<RecipePage> {
             //   String iconData = 'Icons.grass_rounded';
             // }
             return ListTile(
-              // leading: const Icon(),
+              leading: value.getIngredients()[index].icon,
               title: Text(value.getIngredients()[index].name),
             );
           },

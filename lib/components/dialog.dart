@@ -17,10 +17,10 @@ class _AddNewRecipeDialogState extends State<AddNewRecipeDialog> {
   Widget build(BuildContext context) {
     return Consumer<Ingredients>(
       builder: (context, value, child) => AlertDialog(
-        title: Text('Add item to pantry'),
+        title: const Text('Add item to pantry'),
         content: Column(
           children: [
-            Text('Select item to add'),
+            const Text('Select item to add'),
             DropdownMenu(
               controller: itemController,
               requestFocusOnTap: true,
@@ -30,13 +30,13 @@ class _AddNewRecipeDialogState extends State<AddNewRecipeDialog> {
                   .getIngredients()
                   .map<DropdownMenuEntry<Ingredient>>((Ingredient item) {
                 return DropdownMenuEntry<Ingredient>(
-                    value: item, label: item.name);
+                    value: item, label: item.name, leadingIcon: item.icon);
               }).toList(),
             ),
-            Text('You selected ${itemController.text}')
+            Text('You selected ${itemController.text}'),
           ],
         ),
-        actions: [
+        actions: const [
           FilledButton(onPressed: null, child: Icon(Icons.cancel_outlined)),
           FilledButton(onPressed: null, child: Icon(Icons.add_outlined))
         ],
