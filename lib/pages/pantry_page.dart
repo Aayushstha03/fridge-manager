@@ -1,3 +1,5 @@
+//todo add menu bar that can navigate and present users with a settings page
+
 import 'package:flutter/material.dart';
 import 'package:fridge_app/components/dialog.dart';
 import 'package:fridge_app/models/ingredient_model.dart';
@@ -33,6 +35,8 @@ class _PantryPageState extends State<PantryPage> {
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           centerTitle: true,
+          leading:
+              GestureDetector(onTap: () {}, child: Icon(Icons.menu_rounded)),
         ),
         body: ListView.builder(
           itemCount: value.currentPantry.length,
