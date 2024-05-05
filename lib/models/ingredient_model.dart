@@ -8,6 +8,12 @@ class Ingredients extends ChangeNotifier {
     Ingredient(name: 'Onion', icon: 'grass_rounded'),
     Ingredient(name: 'Capsicum', icon: 'grass_rounded'),
     Ingredient(name: 'Tomato', icon: 'grass_rounded'),
+    Ingredient(name: 'Potato', icon: 'grass_rounded'),
+    Ingredient(name: 'Carrot', icon: 'grass_rounded'),
+    Ingredient(name: 'Cucumber', icon: 'grass_rounded'),
+    Ingredient(name: 'Sweet Potato', icon: 'grass_rounded'),
+    Ingredient(name: 'Yam', icon: 'grass_rounded'),
+    Ingredient(name: 'Green Onion', icon: 'grass_rounded'),
     Ingredient(name: 'Chicken', icon: 'kebab_dining_outlined'),
   ];
 //list of current pantry contents
