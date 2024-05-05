@@ -18,23 +18,34 @@ class Ingredients extends ChangeNotifier {
     sweetPotato,
     yam,
   ];
-//list of current pantry contents
-  List<Ingredient> currentPantry = [
-    // Ingredient(name: 'Tofu', icon: const Icon(Icons.grass_rounded))
-  ];
-
-  List<Recipe> recipes = [];
-//get all ingredients
   List<Ingredient> getIngredients() {
     // ingredients.sort((a, b) => a.name.length.compareTo(b.name.length));
     return ingredients;
   }
 
-// pantry contents
+//list of current pantry contents
+  List<Ingredient> currentPantry = [
+    // Ingredient(name: 'Tofu', icon: const Icon(Icons.grass_rounded))
+  ];
   List<Ingredient> getPantryContents() {
     return currentPantry;
   }
 
+//list of all the recipes that we can cook
+  List<Recipe> recipes = [tofuChilli, chimkenChilli];
+
+  List<Recipe> getRecipes() {
+    return recipes;
+  }
+//get all ingredients
+
+  List<Recipe> possibleRecipes = [];
+
+  List<Recipe> getPossibleRecipes() {
+    return possibleRecipes;
+  }
+
+// pantry contents
   ///add item to pantry from list of ingredients
   void addToPantry(Ingredient item) {
     currentPantry.add(item);
@@ -45,5 +56,10 @@ class Ingredients extends ChangeNotifier {
   void removeFromPantry(Ingredient item) {
     currentPantry.remove(item);
     notifyListeners();
+  }
+
+  //
+  void checkPossibleRecipes() {
+    for (Recipe recipe in recipes) {}
   }
 }

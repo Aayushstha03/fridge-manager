@@ -13,3 +13,15 @@ class Recipe {
     required this.type,
   });
 }
+
+Recipe tofuChilli = Recipe(
+    name: 'Tofu Chilli',
+    primaryIngredients: [tofu, onion, tomato],
+    secondaryIngredients: [greenOnio],
+    type: 'veggie');
+
+Recipe chimkenChilli = Recipe(
+    name: 'Chicken Chilli',
+    primaryIngredients: [chimken, onion, tomato],
+    secondaryIngredients: [greenOnio],
+    type: 'veggie');

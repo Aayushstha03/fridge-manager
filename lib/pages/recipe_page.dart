@@ -22,17 +22,54 @@ class _RecipePageState extends State<RecipePage> {
           ),
           centerTitle: true,
         ),
-        body: ListView.builder(
-          itemCount: value.ingredients.length,
-          itemBuilder: (context, index) {
-            // if (value.getIngredients()[index].type == 'veggie') {
-            //   String iconData = 'Icons.grass_rounded';
-            // }
-            return ListTile(
-              leading: value.getIngredients()[index].icon,
-              title: Text(value.getIngredients()[index].name),
-            );
-          },
+        body: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const SizedBox(height: 10),
+            const Text('Possible Recipes',
+                style: TextStyle(
+                  fontSize: 20,
+                  decoration: TextDecoration.underline,
+                )),
+            const SizedBox(
+              height: 10,
+            ),
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: value.possibleRecipes.length,
+              itemBuilder: (context, index) {
+                // if (value.getIngredients()[index].type == 'veggie') {
+                //   String iconData = 'Icons.grass_rounded';
+                // }
+                return ListTile(
+                  leading: const Icon(Icons.restaurant_menu_rounded),
+                  title: Text(value.getPossibleRecipes()[index].name),
+                );
+              },
+            ),
+            const SizedBox(height: 10),
+            const Text('All recipes',
+                style: TextStyle(
+                  fontSize: 20,
+                  decoration: TextDecoration.underline,
+                )),
+            const SizedBox(
+              height: 10,
+            ),
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: value.recipes.length,
+              itemBuilder: (context, index) {
+                // if (value.getIngredients()[index].type == 'veggie') {
+                //   String iconData = 'Icons.grass_rounded';
+                // }
+                return ListTile(
+                  leading: const Icon(Icons.restaurant_menu_rounded),
+                  title: Text(value.getRecipes()[index].name),
+                );
+              },
+            ),
+          ],
         ),
       ),
     );
