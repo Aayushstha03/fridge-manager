@@ -1,29 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:fridge_app/models/ingredient.dart';
+import 'package:fridge_app/models/recipe.dart';
 
 class Ingredients extends ChangeNotifier {
   //list of ingredients
   List<Ingredient> ingredients = [
-    Ingredient(name: 'Tofu', icon: const Icon(Icons.grass_rounded)),
-    Ingredient(name: 'Onion', icon: const Icon(Icons.grass_rounded)),
-    Ingredient(name: 'Capsicum', icon: const Icon(Icons.grass_rounded)),
-    Ingredient(name: 'Tomato', icon: const Icon(Icons.grass_rounded)),
-    Ingredient(name: 'Potato', icon: const Icon(Icons.grass_rounded)),
-    Ingredient(name: 'Carrot', icon: const Icon(Icons.grass_rounded)),
-    Ingredient(name: 'Cucumber', icon: const Icon(Icons.grass_rounded)),
-    Ingredient(name: 'Sweet Potato', icon: const Icon(Icons.grass_rounded)),
-    Ingredient(name: 'Yam', icon: const Icon(Icons.grass_rounded)),
-    Ingredient(name: 'Green Onion', icon: const Icon(Icons.grass_rounded)),
-    Ingredient(name: 'Chicken', icon: const Icon(Icons.kebab_dining_outlined)),
-    Ingredient(name: 'Sausage', icon: const Icon(Icons.kebab_dining_outlined)),
+    tofu,
+    onion,
+    capsicum,
+    carrot,
+    chimken,
+    sausage,
+    greenOnio,
+    tomato,
+    potato,
+    cucumber,
+    sweetPotato,
+    yam,
   ];
 //list of current pantry contents
   List<Ingredient> currentPantry = [
-    Ingredient(name: 'Tofu', icon: const Icon(Icons.grass_rounded))
+    // Ingredient(name: 'Tofu', icon: const Icon(Icons.grass_rounded))
   ];
 
+  List<Recipe> recipes = [];
 //get all ingredients
   List<Ingredient> getIngredients() {
+    // ingredients.sort((a, b) => a.name.length.compareTo(b.name.length));
     return ingredients;
   }
 
