@@ -36,9 +36,20 @@ class _AddNewRecipeDialogState extends State<AddNewRecipeDialog> {
             Text('You selected ${itemController.text}'),
           ],
         ),
-        actions: const [
-          FilledButton(onPressed: null, child: Icon(Icons.cancel_outlined)),
-          FilledButton(onPressed: null, child: Icon(Icons.add_outlined))
+        actions: [
+          FilledButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Icon(Icons.cancel_outlined)),
+          FilledButton(
+              onPressed: () {
+                Ingredient toAdd = value.getIngredients().firstWhere(
+                    (element) => element.name == itemController.text);
+                value.addToPantry(toAdd);
+                Navigator.of(context).pop();
+              },
+              child: const Icon(Icons.add_outlined))
         ],
       ),
     );
