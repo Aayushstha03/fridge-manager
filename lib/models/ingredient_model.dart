@@ -49,17 +49,39 @@ class Ingredients extends ChangeNotifier {
   ///add item to pantry from list of ingredients
   void addToPantry(Ingredient item) {
     currentPantry.add(item);
+    checkPossibleRecipes();
     notifyListeners();
   }
 
   //remove item from ingredients
   void removeFromPantry(Ingredient item) {
     currentPantry.remove(item);
+    checkPossibleRecipes();
     notifyListeners();
   }
 
   //
   void checkPossibleRecipes() {
-    for (Recipe recipe in recipes) {}
+    bool possible = true;
+    for (Recipe recipe in recipes) {
+      possible = true;
+      for (Ingredient item in recipe.primaryIngredients) {
+        if (!(currentPantry.contains(item))) {
+          possible = false; //cant make not enough primary ingredients
+          if (possibleRecipes.contains(recipe)) {
+            //removing the recipe from possible recipes if it was previously possible
+            possibleRecipes.remove(recipe);
+            notifyListeners(); //notify consumers
+          }
+        }
+      }
+      if (possible) {
+        if (!(possibleRecipes.contains(recipe))) {
+          possibleRecipes.add(recipe);
+        }
+        //recipe added to pissible recipe list
+        notifyListeners();
+      }
+    }
   }
 }

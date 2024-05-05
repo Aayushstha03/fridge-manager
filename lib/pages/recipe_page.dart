@@ -1,3 +1,11 @@
+//todo add page that displays recipe details!
+//todo add a search bar to search all recipes and get the necessary ingredients
+//todo add better ui?
+
+//* todo very very late game
+// todo add search and sort filters between breakfast,lunch,snack,dinner
+// todo veggies, meat and whatnots too pachi tara
+
 import 'package:flutter/material.dart';
 import 'package:fridge_app/models/ingredient_model.dart';
 import 'package:provider/provider.dart';
