@@ -12,6 +12,18 @@ class Recipe {
     required this.secondaryIngredients,
     required this.type,
   });
+
+  List<Ingredient> getPrimaryIngredients() {
+    return primaryIngredients;
+  }
+
+  List<Ingredient> getSecondaryIngredients() {
+    return secondaryIngredients;
+  }
+
+  String getType() {
+    return type;
+  }
 }
 
 Recipe tofuChilli = Recipe(
