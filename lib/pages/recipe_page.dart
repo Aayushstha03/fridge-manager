@@ -8,6 +8,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:fridge_app/models/ingredient_model.dart';
+import 'package:fridge_app/models/recipe.dart';
+import 'package:fridge_app/pages/recipe_details_page.dart';
 import 'package:provider/provider.dart';
 
 class RecipePage extends StatefulWidget {
@@ -18,6 +20,11 @@ class RecipePage extends StatefulWidget {
 }
 
 class _RecipePageState extends State<RecipePage> {
+  void Function()? onTap(Recipe recipe) {
+    RecipeDetailsPage(recipe: recipe);
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<Ingredients>(
@@ -52,6 +59,7 @@ class _RecipePageState extends State<RecipePage> {
                 return ListTile(
                   leading: const Icon(Icons.restaurant_menu_rounded),
                   title: Text(value.getPossibleRecipes()[index].name),
+                  onTap: onTap(value.getPossibleRecipes()[index]),
                 );
               },
             ),

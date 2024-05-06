@@ -35,9 +35,13 @@ class _PantryPageState extends State<PantryPage> {
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           centerTitle: true,
-          leading:
-              GestureDetector(onTap: () {}, child: Icon(Icons.menu_rounded)),
+          leading: IconButton(
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+              icon: const Icon(Icons.menu)),
         ),
+        drawer: Drawer(),
         body: ListView.builder(
           itemCount: value.currentPantry.length,
           itemBuilder: (context, index) {
