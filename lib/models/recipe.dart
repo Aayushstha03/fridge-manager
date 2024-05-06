@@ -30,10 +30,10 @@ Recipe tofuChilli = Recipe(
     name: 'Tofu Chilli',
     primaryIngredients: [tofu, onion, tomato],
     secondaryIngredients: [greenOnio],
-    type: 'veggie');
+    type: 'veg');
 
 Recipe chimkenChilli = Recipe(
     name: 'Chicken Chilli',
     primaryIngredients: [chimken, onion, tomato],
     secondaryIngredients: [greenOnio],
-    type: 'veggie');
+    type: 'non-veg');

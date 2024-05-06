@@ -20,6 +20,7 @@ class RecipeDetailsPage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             const SizedBox(height: 10),
             Center(
@@ -54,8 +55,25 @@ class RecipeDetailsPage extends StatelessWidget {
             const SizedBox(height: 10),
             const Text('Ingredients required:'),
             ListView.builder(
+              shrinkWrap: true,
               itemCount: recipe.getPrimaryIngredients().length,
-              itemBuilder: (context, index) {},
+              itemBuilder: (context, index) {
+                return ListTile(
+                  leading: recipe.getPrimaryIngredients()[index].icon,
+                  title: Text(recipe.getPrimaryIngredients()[index].name),
+                );
+              },
+            ),
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: recipe.getSecondaryIngredients().length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  leading: recipe.getSecondaryIngredients()[index].icon,
+                  title: Text(recipe.getSecondaryIngredients()[index].name),
+                  trailing: Text('optional'),
+                );
+              },
             )
           ],
         ),
