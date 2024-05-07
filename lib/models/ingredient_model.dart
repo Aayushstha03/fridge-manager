@@ -18,6 +18,7 @@ class Ingredients extends ChangeNotifier {
     sweetPotato,
     yam,
   ];
+
   List<Ingredient> getIngredients() {
     // ingredients.sort((a, b) => a.name.length.compareTo(b.name.length));
     return ingredients;
@@ -27,6 +28,7 @@ class Ingredients extends ChangeNotifier {
   List<Ingredient> currentPantry = [
     // Ingredient(name: 'Tofu', icon: const Icon(Icons.grass_rounded))
   ];
+
   List<Ingredient> getPantryContents() {
     return currentPantry;
   }

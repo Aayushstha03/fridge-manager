@@ -27,16 +27,22 @@ class _AddNewRecipeDialogState extends State<AddNewRecipeDialog> {
     return File('$path/counter.txt');
   }
 
-  Future<int> readPantryContents() async {
-    try {
-      final file = await _localFile;
-      // Read the file
-      final contents = await file.readAsString();
-      return int.parse(contents);
-    } catch (e) {
-      // If encountering an error, return 0
-      return 0;
-    }
+  Future<List> readPantryContents() async {
+    // try {
+    //   final file = await _localFile;
+    //   // Read the file
+    //   final contents = await file.readAsString();
+    //   return contents;
+    //   return int.parse(contents);
+    // } catch (e) {
+    //   // If encountering an error, return 0
+    //   return 0;
+    // }
+
+    final file = await _localFile;
+    // Read the file
+    final contents = await file.readAsLines();
+    return contents;
   }
 
   Future<File> writePantryContents(List<Ingredient> pantryContents) async {
