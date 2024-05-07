@@ -30,7 +30,7 @@ class RecipeDetailsPage extends StatelessWidget {
                     const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 5),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -53,7 +53,12 @@ class RecipeDetailsPage extends StatelessWidget {
             const SizedBox(height: 10),
             const Divider(),
             const SizedBox(height: 10),
-            const Text('Ingredients required:'),
+            const Text(
+              'Ingredients required',
+              style: TextStyle(
+                fontSize: 18,
+              ),
+            ),
             ListView.builder(
               shrinkWrap: true,
               itemCount: recipe.getPrimaryIngredients().length,
@@ -71,7 +76,7 @@ class RecipeDetailsPage extends StatelessWidget {
                 return ListTile(
                   leading: recipe.getSecondaryIngredients()[index].icon,
                   title: Text(recipe.getSecondaryIngredients()[index].name),
-                  trailing: Text('optional'),
+                  trailing: const Text('optional'),
                 );
               },
             )
