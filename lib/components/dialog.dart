@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:fridge_app/models/ingredient.dart';
 import 'package:fridge_app/models/ingredient_model.dart';
 import 'package:provider/provider.dart';
+import 'package:path_provider/path_provider.dart';
 
 class AddNewRecipeDialog extends StatefulWidget {
   const AddNewRecipeDialog({super.key});
@@ -12,6 +15,35 @@ class AddNewRecipeDialog extends StatefulWidget {
 
 class _AddNewRecipeDialogState extends State<AddNewRecipeDialog> {
   final TextEditingController itemController = TextEditingController();
+
+  //get location to AppData directory assigned by the OS to the app
+  Future<String> get _localPath async {
+    final directory = await getApplicationDocumentsDirectory();
+    return directory.path;
+  }
+
+  Future<File> get _localFile async {
+    final path = await _localPath;
+    return File('$path/counter.txt');
+  }
+
+  Future<int> readPantryContents() async {
+    try {
+      final file = await _localFile;
+      // Read the file
+      final contents = await file.readAsString();
+      return int.parse(contents);
+    } catch (e) {
+      // If encountering an error, return 0
+      return 0;
+    }
+  }
+
+  Future<File> writePantryContents(List<Ingredient> pantryContents) async {
+    final file = await _localFile;
+    // Write the file
+    return file.writeAsString('$pantryContents');
+  }
 
   @override
   Widget build(BuildContext context) {
