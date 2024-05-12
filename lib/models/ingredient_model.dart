@@ -18,6 +18,14 @@ class Ingredients extends ChangeNotifier {
     sweetPotato,
     yam,
   ];
+//convert object to JSON for serialization and storage
+  Map<String, dynamic> toJSON() => {
+        'contents': currentPantry,
+      };
+
+  //converting JSON to object
+  Ingredients.fromJSON(Map<String, dynamic> json)
+      : currentPantry = json['contents'] as List<Ingredient>;
 
   List<Ingredient> getIngredients() {
     // ingredients.sort((a, b) => a.name.length.compareTo(b.name.length));
