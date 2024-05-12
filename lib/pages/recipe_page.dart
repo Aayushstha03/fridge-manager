@@ -1,4 +1,4 @@
-//todo add page that displays recipe details!
+// // todo add page that displays recipe details!
 //todo add a search bar to search all recipes and get the necessary ingredients
 //todo add better ui?
 
