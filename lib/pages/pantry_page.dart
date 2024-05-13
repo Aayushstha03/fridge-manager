@@ -13,17 +13,6 @@ class PantryPage extends StatefulWidget {
 }
 
 class _PantryPageState extends State<PantryPage> {
-  void addRecipe() {
-    //functions
-    //dialog
-    showDialog(
-      context: context,
-      builder: (context) {
-        return const AddNewRecipeDialog();
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Consumer<Ingredients>(
@@ -70,7 +59,13 @@ class _PantryPageState extends State<PantryPage> {
         ),
         floatingActionButton: FloatingActionButton(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          onPressed: addRecipe,
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const AddNewRecipeDialog(),
+                ));
+          },
           child: const Icon(Icons.add),
         ),
       ),

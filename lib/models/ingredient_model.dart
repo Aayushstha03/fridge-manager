@@ -18,6 +18,9 @@ class Ingredients extends ChangeNotifier {
     sweetPotato,
     yam,
   ];
+
+//def constructor
+  Ingredients();
 //convert object to JSON for serialization and storage
   Map<String, dynamic> toJSON() => {
         'contents': currentPantry,

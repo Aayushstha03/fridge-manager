@@ -54,9 +54,16 @@ class _AddNewRecipeDialogState extends State<AddNewRecipeDialog> {
   @override
   Widget build(BuildContext context) {
     return Consumer<Ingredients>(
-      builder: (context, value, child) => AlertDialog(
-        title: const Text('Add item to pantry'),
-        content: Column(
+      builder: (context, value, child) => Scaffold(
+        appBar: AppBar(
+          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          title: const Text(
+            'Add item to pantry',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          centerTitle: true,
+        ),
+        body: Column(
           children: [
             const Text('Select item to add'),
             DropdownMenu(
@@ -72,51 +79,49 @@ class _AddNewRecipeDialogState extends State<AddNewRecipeDialog> {
               }).toList(),
             ),
             Text('You selected ${itemController.text}'),
+            FilledButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: const Icon(Icons.cancel_outlined)),
+            FilledButton(
+                onPressed: () {
+                  Ingredient toAdd = value.getIngredients().firstWhere(
+                      (element) => element.name == itemController.text);
+
+                  if (value.getPantryContents().contains(toAdd) == true) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        showCloseIcon: true,
+                        closeIconColor: Colors.black,
+                        backgroundColor:
+                            Theme.of(context).colorScheme.inversePrimary,
+                        content: const Text(
+                          'Item already in Pantry!',
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      ),
+                    );
+                  } else {
+                    value.addToPantry(toAdd);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        showCloseIcon: true,
+                        closeIconColor: Colors.black,
+                        backgroundColor:
+                            Theme.of(context).colorScheme.inversePrimary,
+                        content: const Text(
+                          'Item successfully added to Pantry!',
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      ),
+                    );
+                  }
+                  Navigator.of(context).pop();
+                },
+                child: const Icon(Icons.add_outlined)),
           ],
         ),
-        actions: [
-          FilledButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: const Icon(Icons.cancel_outlined)),
-          FilledButton(
-              onPressed: () {
-                Ingredient toAdd = value.getIngredients().firstWhere(
-                    (element) => element.name == itemController.text);
-
-                if (value.getPantryContents().contains(toAdd) == true) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      showCloseIcon: true,
-                      closeIconColor: Colors.black,
-                      backgroundColor:
-                          Theme.of(context).colorScheme.inversePrimary,
-                      content: const Text(
-                        'Item already in Pantry!',
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    ),
-                  );
-                } else {
-                  value.addToPantry(toAdd);
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      showCloseIcon: true,
-                      closeIconColor: Colors.black,
-                      backgroundColor:
-                          Theme.of(context).colorScheme.inversePrimary,
-                      content: const Text(
-                        'Item successfully added to Pantry!',
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    ),
-                  );
-                }
-                Navigator.of(context).pop();
-              },
-              child: const Icon(Icons.add_outlined))
-        ],
       ),
     );
   }
