@@ -30,31 +30,57 @@ class _PantryPageState extends State<PantryPage> {
             children: [],
           ),
         ),
-        body: ListView.builder(
-          itemCount: value.currentPantry.length,
-          itemBuilder: (context, index) {
-            return ListTile(
-              leading: value.getPantryContents()[index].icon,
-              title: Text(value.getPantryContents()[index].name),
-              trailing: FilledButton(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-                    (Set<MaterialState> states) {
-                      if (states.contains(MaterialState.pressed)) {
-                        return Colors.red.withOpacity(0.5);
-                      }
-                      return Colors
-                          .red.shade500; // Use the component's default.
-                    },
-                  ),
-                ),
-                onPressed: () {
-                  value.removeFromPantry(value.getPantryContents()[index]);
+        // ** this is the code that presents stuff in current pantry
+        // body: ListView.builder(
+        //   itemCount: value.currentPantry.length,
+        //   itemBuilder: (context, index) {
+        //     return ListTile(
+        //       leading: value.getPantryContents()[index].icon,
+        //       title: Text(value.getPantryContents()[index].name),
+        //       trailing: FilledButton(
+        //         style: ButtonStyle(
+        //           backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+        //             (Set<MaterialState> states) {
+        //               if (states.contains(MaterialState.pressed)) {
+        //                 return Colors.red.withOpacity(0.5);
+        //               }
+        //               return Colors
+        //                   .red.shade500; // Use the component's default.
+        //             },
+        //           ),
+        //         ),
+        //         onPressed: () {
+        //           value.removeFromPantry(value.getPantryContents()[index]);
+        //         },
+        //         child: const Icon(Icons.delete),
+        //       ),
+        //     );
+        //   },
+        // ),
+        // ** upto here
+        // ** here im building the new demo homepage:)
+        body: Column(
+          children: [
+            //red alert block
+            Card(
+              color: Colors.red.shade500,
+              clipBehavior: Clip.hardEdge,
+              child: InkWell(
+                splashColor: Colors.white.withAlpha(30),
+                onTap: () {
+                  debugPrint('Card tapped.');
                 },
-                child: const Icon(Icons.delete),
+                child: const Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    ListTile(
+                      title: Text('A card that can be tapped'),
+                    ),
+                  ],
+                ),
               ),
-            );
-          },
+            ),
+          ],
         ),
         floatingActionButton: FloatingActionButton(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
