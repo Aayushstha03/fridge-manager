@@ -1,3 +1,5 @@
+// todo null safety, disable the save button if the dropdown bar is empty
+
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -63,64 +65,83 @@ class _AddNewRecipeDialogState extends State<AddNewRecipeDialog> {
           ),
           centerTitle: true,
         ),
-        body: Column(
-          children: [
-            const Text('Select item to add'),
-            DropdownMenu(
-              controller: itemController,
-              requestFocusOnTap: true,
-              enableFilter: true,
-              enableSearch: true,
-              dropdownMenuEntries: value
-                  .getIngredients()
-                  .map<DropdownMenuEntry<Ingredient>>((Ingredient item) {
-                return DropdownMenuEntry<Ingredient>(
-                    value: item, label: item.name, leadingIcon: item.icon);
-              }).toList(),
-            ),
-            Text('You selected ${itemController.text}'),
-            FilledButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: const Icon(Icons.cancel_outlined)),
-            FilledButton(
-                onPressed: () {
-                  Ingredient toAdd = value.getIngredients().firstWhere(
-                      (element) => element.name == itemController.text);
+        body: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Center(
+            child: Column(
+              children: [
+                DropdownMenu(
+                  label: const Text('Item Name'),
+                  expandedInsets: const EdgeInsets.all(0),
+                  leadingIcon: const Icon(Icons.search_outlined),
+                  hintText: 'Select an item from the list',
+                  width: null,
+                  controller: itemController,
+                  requestFocusOnTap: true,
+                  enableFilter: true,
+                  enableSearch: true,
+                  dropdownMenuEntries: value
+                      .getIngredients()
+                      .map<DropdownMenuEntry<Ingredient>>((Ingredient item) {
+                    return DropdownMenuEntry<Ingredient>(
+                        value: item, label: item.name, leadingIcon: item.icon);
+                  }).toList(),
+                ),
+                //debugging
+                // Text('You selected ${itemController.text}'),
+                const SizedBox(height: 10),
+                //action buttons
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    FilledButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: const Icon(Icons.cancel_outlined),
+                    ),
+                    FilledButton(
+                      onPressed: () {
+                        Ingredient toAdd = value.getIngredients().firstWhere(
+                            (element) => element.name == itemController.text);
 
-                  if (value.getPantryContents().contains(toAdd) == true) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        showCloseIcon: true,
-                        closeIconColor: Colors.black,
-                        backgroundColor:
-                            Theme.of(context).colorScheme.inversePrimary,
-                        content: const Text(
-                          'Item already in Pantry!',
-                          style: TextStyle(color: Colors.black),
-                        ),
-                      ),
-                    );
-                  } else {
-                    value.addToPantry(toAdd);
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        showCloseIcon: true,
-                        closeIconColor: Colors.black,
-                        backgroundColor:
-                            Theme.of(context).colorScheme.inversePrimary,
-                        content: const Text(
-                          'Item successfully added to Pantry!',
-                          style: TextStyle(color: Colors.black),
-                        ),
-                      ),
-                    );
-                  }
-                  Navigator.of(context).pop();
-                },
-                child: const Icon(Icons.add_outlined)),
-          ],
+                        if (value.getPantryContents().contains(toAdd) == true) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              showCloseIcon: true,
+                              closeIconColor: Colors.black,
+                              backgroundColor:
+                                  Theme.of(context).colorScheme.inversePrimary,
+                              content: const Text(
+                                'Item already in Pantry!',
+                                style: TextStyle(color: Colors.black),
+                              ),
+                            ),
+                          );
+                        } else {
+                          value.addToPantry(toAdd);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              showCloseIcon: true,
+                              closeIconColor: Colors.black,
+                              backgroundColor:
+                                  Theme.of(context).colorScheme.inversePrimary,
+                              content: const Text(
+                                'Item successfully added to Pantry!',
+                                style: TextStyle(color: Colors.black),
+                              ),
+                            ),
+                          );
+                        }
+                        Navigator.of(context).pop();
+                      },
+                      child: const Icon(Icons.add_outlined),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );
