@@ -24,13 +24,12 @@ class _PantryPageState extends State<PantryPage> {
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           centerTitle: true,
-          leading: IconButton(
-              onPressed: () {
-                Scaffold.of(context).openDrawer();
-              },
-              icon: const Icon(Icons.menu)),
         ),
-        drawer: Drawer(),
+        drawer: const Drawer(
+          child: Column(
+            children: [],
+          ),
+        ),
         body: ListView.builder(
           itemCount: value.currentPantry.length,
           itemBuilder: (context, index) {
