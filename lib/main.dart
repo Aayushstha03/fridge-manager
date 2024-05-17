@@ -23,9 +23,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Fridge App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber.shade300),
+        // colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.amber),
         useMaterial3: true,
       ),
+      darkTheme: ThemeData.dark(),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -51,12 +52,13 @@ class _MyHomePageState extends State<MyHomePage> {
       body: pages[currentPageIndex],
       // This trailing comma makes auto-formatting nicer for build methods.
       bottomNavigationBar: NavigationBar(
+        // backgroundColor: Theme.of(context).colorScheme.background,
         onDestinationSelected: (int index) {
           setState(() {
             currentPageIndex = index;
           });
         },
-        indicatorColor: Theme.of(context).colorScheme.inversePrimary,
+        // indicatorColor: Theme.of(context).focusColor,
         selectedIndex: currentPageIndex,
         destinations: const <Widget>[
           NavigationDestination(

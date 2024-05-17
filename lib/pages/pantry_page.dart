@@ -18,7 +18,7 @@ class _PantryPageState extends State<PantryPage> {
     return Consumer<Ingredients>(
       builder: (context, value, child) => Scaffold(
         appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          elevation: 6,
           title: const Text(
             'Pantry',
             style: TextStyle(fontWeight: FontWeight.bold),
@@ -59,31 +59,35 @@ class _PantryPageState extends State<PantryPage> {
         // ),
         // ** upto here
         // ** here im building the new demo homepage:)
-        body: Column(
-          children: [
-            //red alert block
-            Card(
-              color: Colors.red.shade500,
-              clipBehavior: Clip.hardEdge,
-              child: InkWell(
-                splashColor: Colors.white.withAlpha(30),
-                onTap: () {
-                  debugPrint('Card tapped.');
-                },
-                child: const Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    ListTile(
-                      title: Text('A card that can be tapped'),
-                    ),
-                  ],
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              //red alert block
+              Card(
+                color: Theme.of(context).colorScheme.errorContainer,
+                clipBehavior: Clip.hardEdge,
+                child: InkWell(
+                  splashColor: Colors.white.withAlpha(30),
+                  onTap: () {
+                    debugPrint('Card tapped.');
+                  },
+                  child: const Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      ListTile(
+                        title: Text('A card that can be tapped'),
+                      ),
+                      SizedBox(height: 30),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
         floatingActionButton: FloatingActionButton(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          backgroundColor: Theme.of(context).colorScheme.primaryContainer,
           onPressed: () {
             Navigator.push(
                 context,
