@@ -65,20 +65,70 @@ class _PantryPageState extends State<PantryPage> {
             children: [
               //red alert block
               Card(
-                color: Theme.of(context).colorScheme.errorContainer,
+                color: Colors.red.shade900,
                 clipBehavior: Clip.hardEdge,
                 child: InkWell(
                   splashColor: Colors.white.withAlpha(30),
                   onTap: () {
                     debugPrint('Card tapped.');
                   },
-                  child: const Column(
+                  child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       ListTile(
-                        title: Text('A card that can be tapped'),
+                        textColor:
+                            Theme.of(context).colorScheme.onSecondaryContainer,
+                        title: const Text('A card that can be tapped'),
+                        subtitle: const Text(
+                            'This will display information about the number of items in pantry in red zone'),
                       ),
-                      SizedBox(height: 30),
+                      const SizedBox(height: 30),
+                    ],
+                  ),
+                ),
+              ),
+              Card(
+                color: Colors.yellow.shade900,
+                clipBehavior: Clip.hardEdge,
+                child: InkWell(
+                  splashColor: Colors.white.withAlpha(30),
+                  onTap: () {
+                    debugPrint('Card tapped.');
+                  },
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      ListTile(
+                        textColor:
+                            Theme.of(context).colorScheme.onSecondaryContainer,
+                        title: const Text('A card that can be tapped'),
+                        subtitle: const Text(
+                            'This will display information about the number of items in pantry in yelow zone'),
+                      ),
+                      const SizedBox(height: 30),
+                    ],
+                  ),
+                ),
+              ),
+              Card(
+                color: Colors.green.shade900,
+                clipBehavior: Clip.hardEdge,
+                child: InkWell(
+                  splashColor: Colors.white.withAlpha(30),
+                  onTap: () {
+                    debugPrint('Card tapped.');
+                  },
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      ListTile(
+                        textColor:
+                            Theme.of(context).colorScheme.onSecondaryContainer,
+                        title: const Text('A card that can be tapped'),
+                        subtitle: const Text(
+                            'This will display information about the number of items in pantry in oka chill zone'),
+                      ),
+                      const SizedBox(height: 30),
                     ],
                   ),
                 ),
