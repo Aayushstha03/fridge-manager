@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fridge_app/components/myAppBar.dart';
 import 'package:fridge_app/models/recipe.dart';
 
 class RecipeDetailsPage extends StatelessWidget {
@@ -9,14 +10,7 @@ class RecipeDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text(
-          'Recipe Details',
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-        centerTitle: true,
-      ),
+      appBar: const MyAppBar(title: 'Recipe Details'),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12),
         child: Column(

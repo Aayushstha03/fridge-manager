@@ -7,6 +7,7 @@
 // todo veggies, meat and whatnots too pachi tara
 
 import 'package:flutter/material.dart';
+import 'package:fridge_app/components/myAppBar.dart';
 import 'package:fridge_app/models/ingredient_model.dart';
 import 'package:fridge_app/pages/recipe_details_page.dart';
 import 'package:provider/provider.dart';
@@ -23,14 +24,7 @@ class _RecipePageState extends State<RecipePage> {
   Widget build(BuildContext context) {
     return Consumer<Ingredients>(
       builder: (context, value, child) => Scaffold(
-        appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: const Text(
-            'Recipes',
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
-          centerTitle: true,
-        ),
+        appBar: const MyAppBar(title: 'Recipes'),
         body: Column(
           mainAxisSize: MainAxisSize.min,
           children: [

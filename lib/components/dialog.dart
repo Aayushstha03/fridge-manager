@@ -3,6 +3,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:fridge_app/components/myAppBar.dart';
 import 'package:fridge_app/models/ingredient.dart';
 import 'package:fridge_app/models/ingredient_model.dart';
 import 'package:provider/provider.dart';
@@ -57,15 +58,7 @@ class _AddNewRecipeDialogState extends State<AddNewRecipeDialog> {
   Widget build(BuildContext context) {
     return Consumer<Ingredients>(
       builder: (context, value, child) => Scaffold(
-        appBar: AppBar(
-          elevation: 6,
-          // backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: const Text(
-            'Add item to pantry',
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
-          centerTitle: true,
-        ),
+        appBar: const MyAppBar(title: 'Add item to pantry'),
         body: Padding(
           padding: const EdgeInsets.all(20),
           child: Center(

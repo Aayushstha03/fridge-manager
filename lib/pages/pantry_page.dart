@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:fridge_app/components/dialog.dart';
+import 'package:fridge_app/components/myAppBar.dart';
 import 'package:fridge_app/models/ingredient_model.dart';
 import 'package:provider/provider.dart';
 
@@ -17,14 +18,7 @@ class _PantryPageState extends State<PantryPage> {
   Widget build(BuildContext context) {
     return Consumer<Ingredients>(
       builder: (context, value, child) => Scaffold(
-        appBar: AppBar(
-          elevation: 6,
-          title: const Text(
-            'Pantry',
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
-          centerTitle: true,
-        ),
+        appBar: const MyAppBar(title: 'Pantry'),
         drawer: const Drawer(
           child: Column(
             children: [],
