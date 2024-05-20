@@ -136,7 +136,7 @@ class _PantryPageState extends State<PantryPage> {
             ],
           ),
         ),
-        floatingActionButton: FloatingActionButton(
+        floatingActionButton: FloatingActionButton.extended(
           backgroundColor: Theme.of(context).colorScheme.primaryContainer,
           onPressed: () {
             Navigator.push(
@@ -145,7 +145,8 @@ class _PantryPageState extends State<PantryPage> {
                   builder: (context) => const AddNewRecipeDialog(),
                 ));
           },
-          child: const Icon(Icons.add),
+          icon: const Icon(Icons.add),
+          label: const Text('Add Item'),
         ),
       ),
     );

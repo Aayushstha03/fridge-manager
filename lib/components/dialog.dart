@@ -1,4 +1,4 @@
-// todo null safety, disable the save button if the dropdown bar is empty
+// // completed todo null safety, disable the save button if the dropdown bar is empty
 
 import 'dart:io';
 
@@ -58,7 +58,8 @@ class _AddNewRecipeDialogState extends State<AddNewRecipeDialog> {
     return Consumer<Ingredients>(
       builder: (context, value, child) => Scaffold(
         appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          elevation: 6,
+          // backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           title: const Text(
             'Add item to pantry',
             style: TextStyle(fontWeight: FontWeight.bold),
@@ -94,17 +95,31 @@ class _AddNewRecipeDialogState extends State<AddNewRecipeDialog> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    FilledButton(
+                    ElevatedButton(
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
                       child: const Icon(Icons.cancel_outlined),
                     ),
-                    FilledButton(
+                    ElevatedButton(
                       onPressed: () {
+                        if (itemController.text.isEmpty) {
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            duration: Durations.short4,
+                            showCloseIcon: true,
+                            closeIconColor: Colors.white,
+                            backgroundColor:
+                                Theme.of(context).colorScheme.inversePrimary,
+                            content: const Text(
+                              'No Item Selected!',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ));
+                          return;
+                        }
+
                         Ingredient toAdd = value.getIngredients().firstWhere(
                             (element) => element.name == itemController.text);
-
                         if (value.getPantryContents().contains(toAdd) == true) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(

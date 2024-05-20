@@ -22,9 +22,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Fridge App',
-      //light theme settings
+      // light theme settings
+      // ** will not have light mode!
       // theme: ThemeData(
-      //   colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.teal),
+      //   colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.purple),
       //   useMaterial3: true,
       // ),
       darkTheme: ThemeData(
