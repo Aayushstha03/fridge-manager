@@ -1,4 +1,7 @@
 //todo add menu bar that can navigate and present users with a settings page
+//todo add optap functions for each card to open the respective page
+//todo add different lists in the model provider to handle different lists
+//todo add date field to the model to calculate expiry time of items in pantry
 
 import 'package:flutter/material.dart';
 import 'package:fridge_app/components/MyCard.dart';
