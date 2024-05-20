@@ -63,15 +63,15 @@ class _PantryPageState extends State<PantryPage> {
             children: [
               //red alert block
               MyCard(
-                  color: Colors.red.shade900,
+                  color: Colors.red.shade900.withOpacity(0.5),
                   title: 'Expiring Immediately',
                   onTap: () {}),
               MyCard(
-                  color: Colors.yellow.shade900,
+                  color: Colors.yellow.shade900.withOpacity(0.5),
                   title: 'Keep in mind',
                   onTap: () {}),
               MyCard(
-                  color: Colors.green.shade900,
+                  color: Colors.green.shade900.withOpacity(0.5),
                   title: 'Good for now',
                   onTap: () {}),
             ],
