@@ -22,11 +22,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Fridge App',
-      theme: ThemeData(
-        // colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.amber),
-        useMaterial3: true,
+      //light theme settings
+      // theme: ThemeData(
+      //   colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.teal),
+      //   useMaterial3: true,
+      // ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        colorSchemeSeed: Colors.deepPurple,
       ),
-      darkTheme: ThemeData.dark(),
+      themeMode: ThemeMode.dark,
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
