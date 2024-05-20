@@ -5,12 +5,13 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   @override
   Size get preferredSize => const Size.fromHeight(60);
+  @override
   Widget build(BuildContext context) {
     return AppBar(
       elevation: 6,
       title: Text(
         title,
-        style: const TextStyle(fontWeight: FontWeight.bold),
+        style: Theme.of(context).textTheme.headlineSmall,
       ),
       centerTitle: true,
     );

@@ -1,6 +1,7 @@
 //todo add menu bar that can navigate and present users with a settings page
 
 import 'package:flutter/material.dart';
+import 'package:fridge_app/components/MyCard.dart';
 import 'package:fridge_app/components/dialog.dart';
 import 'package:fridge_app/components/myAppBar.dart';
 import 'package:fridge_app/models/ingredient_model.dart';
@@ -58,75 +59,18 @@ class _PantryPageState extends State<PantryPage> {
           child: Column(
             children: [
               //red alert block
-              Card(
-                color: Colors.red.shade900,
-                clipBehavior: Clip.hardEdge,
-                child: InkWell(
-                  splashColor: Colors.white.withAlpha(30),
-                  onTap: () {
-                    debugPrint('Card tapped.');
-                  },
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      ListTile(
-                        textColor:
-                            Theme.of(context).colorScheme.onSecondaryContainer,
-                        title: const Text('A card that can be tapped'),
-                        subtitle: const Text(
-                            'This will display information about the number of items in pantry in red zone'),
-                      ),
-                      const SizedBox(height: 30),
-                    ],
-                  ),
-                ),
-              ),
-              Card(
-                color: Colors.yellow.shade900,
-                clipBehavior: Clip.hardEdge,
-                child: InkWell(
-                  splashColor: Colors.white.withAlpha(30),
-                  onTap: () {
-                    debugPrint('Card tapped.');
-                  },
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      ListTile(
-                        textColor:
-                            Theme.of(context).colorScheme.onSecondaryContainer,
-                        title: const Text('A card that can be tapped'),
-                        subtitle: const Text(
-                            'This will display information about the number of items in pantry in yelow zone'),
-                      ),
-                      const SizedBox(height: 30),
-                    ],
-                  ),
-                ),
-              ),
-              Card(
-                color: Colors.green.shade900,
-                clipBehavior: Clip.hardEdge,
-                child: InkWell(
-                  splashColor: Colors.white.withAlpha(30),
-                  onTap: () {
-                    debugPrint('Card tapped.');
-                  },
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      ListTile(
-                        textColor:
-                            Theme.of(context).colorScheme.onSecondaryContainer,
-                        title: const Text('A card that can be tapped'),
-                        subtitle: const Text(
-                            'This will display information about the number of items in pantry in oka chill zone'),
-                      ),
-                      const SizedBox(height: 30),
-                    ],
-                  ),
-                ),
-              ),
+              MyCard(
+                  color: Colors.red.shade900,
+                  title: 'Expiring Immediately',
+                  onTap: () {}),
+              MyCard(
+                  color: Colors.yellow.shade900,
+                  title: 'Keep in mind',
+                  onTap: () {}),
+              MyCard(
+                  color: Colors.green.shade900,
+                  title: 'Good for now',
+                  onTap: () {}),
             ],
           ),
         ),
