@@ -62,7 +62,7 @@ class _AddNewRecipeDialogState extends State<AddNewRecipeDialog> {
     final DateTime? picked = await showDatePicker(
         context: context,
         initialDate: selectedDate,
-        firstDate: DateTime(2015, 8),
+        firstDate: DateTime(2015),
         lastDate: DateTime(2101));
     if (picked != null && picked != selectedDate) {
       setState(() {
@@ -78,7 +78,7 @@ class _AddNewRecipeDialogState extends State<AddNewRecipeDialog> {
     final DateTime? picked = await showDatePicker(
         context: context,
         initialDate: selectedDate,
-        firstDate: DateTime(2015, 8),
+        firstDate: DateTime.parse(purchaseDateController.text),
         lastDate: DateTime(2101));
     if (picked != null && picked != selectedDate) {
       setState(() {
