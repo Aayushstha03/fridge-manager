@@ -4,9 +4,10 @@
 //todo add date field to the model to calculate expiry time of items in pantry
 
 import 'package:flutter/material.dart';
+import 'package:fridge_app/components/ListingPage.dart';
 import 'package:fridge_app/components/MyCard.dart';
-import 'package:fridge_app/components/dialog.dart';
-import 'package:fridge_app/components/myAppBar.dart';
+import 'package:fridge_app/components/Dialog.dart';
+import 'package:fridge_app/components/MyAppBar.dart';
 import 'package:fridge_app/models/ingredient_model.dart';
 import 'package:provider/provider.dart';
 
@@ -63,9 +64,17 @@ class _PantryPageState extends State<PantryPage> {
             children: [
               //red alert block
               MyCard(
-                  color: Colors.red.shade900.withOpacity(0.5),
-                  title: 'Expiring Immediately',
-                  onTap: () {}),
+                color: Colors.red.shade900.withOpacity(0.5),
+                title: 'Expiring Immediately',
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const MyListingPage(
+                                title: 'elo',
+                              )));
+                },
+              ),
               MyCard(
                   color: Colors.yellow.shade900.withOpacity(0.5),
                   title: 'Keep in mind',

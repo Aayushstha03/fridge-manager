@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fridge_app/components/ListingPage.dart';
 import 'package:fridge_app/models/ingredient_model.dart';
 import 'package:provider/provider.dart';
 
@@ -26,9 +27,7 @@ class _MyCardState extends State<MyCard> {
         clipBehavior: Clip.hardEdge,
         child: InkWell(
           splashColor: Colors.white.withAlpha(30),
-          onTap: () {
-            debugPrint('Card tapped.');
-          },
+          onTap: widget.onTap,
           child: Padding(
             padding: const EdgeInsets.fromLTRB(0, 10, 0, 20),
             child: Column(
