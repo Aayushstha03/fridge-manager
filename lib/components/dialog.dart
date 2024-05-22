@@ -18,8 +18,9 @@ class AddNewRecipeDialog extends StatefulWidget {
 }
 
 class _AddNewRecipeDialogState extends State<AddNewRecipeDialog> {
+  DateTime selectedDate = DateTime.now();
   final TextEditingController itemController = TextEditingController();
-
+  TextEditingController dateController = TextEditingController();
   //get location to AppData directory assigned by the OS to the app
   Future<String> get _localPath async {
     final directory = await getApplicationDocumentsDirectory();
@@ -55,6 +56,21 @@ class _AddNewRecipeDialogState extends State<AddNewRecipeDialog> {
     return file.writeAsString('$pantryContents');
   }
 
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: selectedDate,
+        firstDate: DateTime(2015, 8),
+        lastDate: DateTime(2101));
+    if (picked != null && picked != selectedDate) {
+      setState(() {
+        selectedDate = picked;
+        FocusManager.instance.primaryFocus?.unfocus();
+        dateController.text = selectedDate.toLocal().toString().split(' ')[0];
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<Ingredients>(
@@ -82,6 +98,24 @@ class _AddNewRecipeDialogState extends State<AddNewRecipeDialog> {
                         value: item, label: item.name, leadingIcon: item.icon);
                   }).toList(),
                 ),
+                const SizedBox(height: 10),
+
+                TextField(
+                  keyboardType: TextInputType.none,
+                  readOnly: true,
+                  controller: dateController,
+                  onTapOutside: (event) {
+                    FocusManager.instance.primaryFocus?.unfocus();
+                  },
+                  onTap: () => {_selectDate(context)},
+                  decoration: const InputDecoration(
+                    prefixIcon: Icon(Icons.calendar_today_outlined),
+                    labelText: 'Purchase Date',
+                    hintText: 'yyyy-mm-dd',
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+
                 //debugging
                 // Text('You selected ${itemController.text}'),
                 const SizedBox(height: 10),
@@ -114,9 +148,12 @@ class _AddNewRecipeDialogState extends State<AddNewRecipeDialog> {
 
                         Ingredient toAdd = value.getIngredients().firstWhere(
                             (element) => element.name == itemController.text);
+
+                        // IngredientPlus(ingredient: toAdd, dateAddToPantry: dateAddToPantry, timeToExpire: timeToExpire) toCheck;
                         if (value.getPantryContents().contains(toAdd) == true) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
+                              duration: Durations.long1,
                               showCloseIcon: true,
                               closeIconColor: Colors.black,
                               backgroundColor:
