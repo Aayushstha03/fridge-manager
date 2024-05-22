@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:fridge_app/models/ingredient.dart';
+import 'package:fridge_app/models/ingredientPlus.dart';
 import 'package:fridge_app/models/recipe.dart';
 
 class Ingredients extends ChangeNotifier {
+  Ingredients();
+
   //list of ingredients
   List<Ingredient> ingredients = [
     tofu,
@@ -20,15 +23,14 @@ class Ingredients extends ChangeNotifier {
   ];
 
 //def constructor
-  Ingredients();
 //convert object to JSON for serialization and storage
-  Map<String, dynamic> toJSON() => {
-        'contents': currentPantry,
-      };
+  // Map<String, dynamic> toJSON() => {
+  //       'contents': currentPantry,
+  //     };
 
-  //converting JSON to object
-  Ingredients.fromJSON(Map<String, dynamic> json)
-      : currentPantry = json['contents'] as List<Ingredient>;
+  // //converting JSON to object
+  // Ingredients.fromJSON(Map<String, dynamic> json)
+  //     : currentPantry = json['contents'] as List<Ingredient>;
 
   List<Ingredient> getIngredients() {
     // ingredients.sort((a, b) => a.name.length.compareTo(b.name.length));
@@ -36,11 +38,11 @@ class Ingredients extends ChangeNotifier {
   }
 
 //list of current pantry contents
-  List<Ingredient> currentPantry = [
-    Ingredient(name: 'Tofu', icon: const Icon(Icons.grass_rounded))
+  List<IngredientPlus> currentPantry = [
+    // Ingredient(name: 'Tofu', icon: const Icon(Icons.grass_rounded))
   ];
 
-  List<Ingredient> getPantryContents() {
+  List<IngredientPlus> getPantryContents() {
     return currentPantry;
   }
 
@@ -60,7 +62,7 @@ class Ingredients extends ChangeNotifier {
 
 // pantry contents
   ///add item to pantry from list of ingredients
-  void addToPantry(Ingredient item) {
+  void addToPantry(IngredientPlus item) {
     currentPantry.add(item);
     checkPossibleRecipes();
     notifyListeners();

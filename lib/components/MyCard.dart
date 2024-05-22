@@ -41,7 +41,7 @@ class _MyCardState extends State<MyCard> {
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                   subtitle: Text(
-                    '${value.currentPantry.length} items\nIncluding: ${value.getPantryContents()[0].name} ',
+                    '${value.currentPantry.length} items\nIncluding:  ',
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
                 ),

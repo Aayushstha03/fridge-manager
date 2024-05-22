@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:fridge_app/components/myAppBar.dart';
 import 'package:fridge_app/models/ingredient.dart';
+import 'package:fridge_app/models/ingredientPlus.dart';
 import 'package:fridge_app/models/ingredient_model.dart';
 import 'package:provider/provider.dart';
 import 'package:path_provider/path_provider.dart';
@@ -127,7 +128,10 @@ class _AddNewRecipeDialogState extends State<AddNewRecipeDialog> {
                             ),
                           );
                         } else {
-                          value.addToPantry(toAdd);
+                          value.addToPantry(IngredientPlus(
+                              ingredient: toAdd,
+                              dateAddToPantry: DateTime.now(),
+                              timeToExpire: Durations.extralong4));
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               showCloseIcon: true,
