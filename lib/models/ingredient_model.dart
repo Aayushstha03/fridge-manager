@@ -37,7 +37,7 @@ class Ingredients extends ChangeNotifier {
 
 //list of current pantry contents
   List<Ingredient> currentPantry = [
-    // Ingredient(name: 'Tofu', icon: const Icon(Icons.grass_rounded))
+    Ingredient(name: 'Tofu', icon: const Icon(Icons.grass_rounded))
   ];
 
   List<Ingredient> getPantryContents() {
