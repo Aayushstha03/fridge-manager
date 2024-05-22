@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fridge_app/components/ListingPage.dart';
 import 'package:fridge_app/models/ingredient_model.dart';
 import 'package:provider/provider.dart';
 

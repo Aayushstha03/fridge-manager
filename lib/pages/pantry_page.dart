@@ -29,35 +29,6 @@ class _PantryPageState extends State<PantryPage> {
             children: [],
           ),
         ),
-        // ** this is the code that presents stuff in current pantry
-        // body: ListView.builder(
-        //   itemCount: value.currentPantry.length,
-        //   itemBuilder: (context, index) {
-        //     return ListTile(
-        //       leading: value.getPantryContents()[index].icon,
-        //       title: Text(value.getPantryContents()[index].name),
-        //       trailing: FilledButton(
-        //         style: ButtonStyle(
-        //           backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-        //             (Set<MaterialState> states) {
-        //               if (states.contains(MaterialState.pressed)) {
-        //                 return Colors.red.withOpacity(0.5);
-        //               }
-        //               return Colors
-        //                   .red.shade500; // Use the component's default.
-        //             },
-        //           ),
-        //         ),
-        //         onPressed: () {
-        //           value.removeFromPantry(value.getPantryContents()[index]);
-        //         },
-        //         child: const Icon(Icons.delete),
-        //       ),
-        //     );
-        //   },
-        // ),
-        // ** upto here
-        // ** here im building the new demo homepage:)
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
@@ -71,18 +42,32 @@ class _PantryPageState extends State<PantryPage> {
                       context,
                       MaterialPageRoute(
                           builder: (context) => const MyListingPage(
-                                title: 'elo',
+                                title: 'Expiring Immediately',
                               )));
                 },
               ),
               MyCard(
                   color: Colors.yellow.shade900.withOpacity(0.5),
                   title: 'Keep in mind',
-                  onTap: () {}),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const MyListingPage(
+                                  title: 'Keep in mind',
+                                )));
+                  }),
               MyCard(
                   color: Colors.green.shade900.withOpacity(0.5),
                   title: 'Good for now',
-                  onTap: () {}),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const MyListingPage(
+                                  title: 'Good for now',
+                                )));
+                  }),
             ],
           ),
         ),

@@ -69,7 +69,7 @@ class Ingredients extends ChangeNotifier {
   }
 
   //remove item from ingredients
-  void removeFromPantry(Ingredient item) {
+  void removeFromPantry(IngredientPlus item) {
     currentPantry.remove(item);
     checkPossibleRecipes();
     notifyListeners();
